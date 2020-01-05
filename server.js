@@ -40,9 +40,9 @@ io.on('connection', socket => {
     socket.to(room).broadcast.emit('user-connected', name)
   })
   socket.on('send-chat-message', (room, message) => {
-    let unreadMessageCount = 0;
+    //let unreadMessageCount = 0;
     socket.to(room).broadcast.emit('chat-message', { message: message, name: rooms[room].users[socket.id] })
-    res.status(200).send({ lastMessage : message, unreadMessageCount : unreadMessageCount })
+   // res.status(200).send({ lastMessage : message, unreadMessageCount : unreadMessageCount })
   })
   socket.on('disconnect', () => {
     getUserRooms(socket).forEach(room => {
